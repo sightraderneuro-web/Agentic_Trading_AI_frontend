@@ -1,0 +1,18 @@
+{
+  "name": "sightrader",
+  "version": "0.1.0",
+  "description": "Landing page and beta waitlist for sightrader.com",
+  "scripts": {
+    "dev": "wrangler dev",
+    "deploy": "wrangler deploy",
+    "db:init:local": "wrangler d1 execute sightrader-waitlist --local --file=schema.sql",
+    "db:init:remote": "wrangler d1 execute sightrader-waitlist --remote --file=schema.sql",
+    "signups": "wrangler d1 execute sightrader-waitlist --remote --command \"SELECT created_at, email, role, agent_use, markets, source, country FROM signups ORDER BY created_at DESC\"",
+    "signups:count": "wrangler d1 execute sightrader-waitlist --remote --command \"SELECT COUNT(*) AS total, SUM(role IS NOT NULL) AS answered FROM signups\"",
+    "signups:by-source": "wrangler d1 execute sightrader-waitlist --remote --command \"SELECT COALESCE(source, referrer, 'direct') AS channel, COUNT(*) AS signups FROM signups GROUP BY channel ORDER BY signups DESC\""
+  },
+  "devDependencies": {
+    "wrangler": "^4.168.0"
+  },
+  "private": true
+}

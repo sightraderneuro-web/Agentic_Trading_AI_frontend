@@ -1,0 +1,26 @@
+{
+  "$schema": "node_modules/wrangler/config-schema.json",
+  "name": "sightrader",
+  "main": "src/worker.js",
+  "compatibility_date": "2026-10-01",
+
+  // Everything in /public is served as a static file. The Worker only runs for
+  // requests that don't match a file (that's how /api/subscribe reaches it).
+  "assets": {
+    "directory": "./public",
+    "binding": "ASSETS",
+    "not_found_handling": "404-page"
+  },
+
+  // Signup storage. Create it with `npx wrangler d1 create sightrader-waitlist`
+  // and paste the database_id it prints here.
+  "d1_databases": [
+    {
+      "binding": "DB",
+      "database_name": "sightrader-waitlist",
+      "database_id": "REPLACE_WITH_YOUR_DATABASE_ID"
+    }
+  ],
+
+  "observability": { "enabled": true }
+}

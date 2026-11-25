@@ -62,9 +62,9 @@ git commit -am "Add D1 database id" && git push
 
 1. Cloudflare dashboard → **Workers & Pages → Create → Import a repository**.
 2. Authorise GitHub, pick the `sightrader` repo, branch `main`.
-3. Name the Worker `sightrader`. It must match `"name"` in `wrangler.jsonc` or the build fails.
+3. The Worker's name must match `"name"` in `wrangler.jsonc`. This one is called `agentic-trading-ai-frontend`; if you ever rename it in the dashboard, change `wrangler.jsonc` too.
 4. Leave the build command empty and the root directory as `/`. The deploy command is `npx wrangler deploy` (the default).
-5. **Save and Deploy**. You get a preview at `sightrader.<your-subdomain>.workers.dev`. Try the form there.
+5. **Save and Deploy**. You get a preview at `agentic-trading-ai-frontend.<your-subdomain>.workers.dev`. Try the form there.
 
 From now on, every `git push` to `main` goes live within a minute or two. Pushes to any other branch build a preview version with its own URL, which is a safe way to try a redesign before merging it into `main`.
 

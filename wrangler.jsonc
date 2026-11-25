@@ -1,6 +1,7 @@
 {
   "$schema": "node_modules/wrangler/config-schema.json",
-  "name": "sightrader",
+  // Must match the Worker's name in the Cloudflare dashboard.
+  "name": "agentic-trading-ai-frontend",
   "main": "src/worker.js",
   "compatibility_date": "2026-10-01",
 
